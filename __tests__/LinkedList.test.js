@@ -682,20 +682,20 @@ describe("Testing the factory function LinkedList", () => {
       );
     });
 
-    test("The insertAt method of factory function LinkedList works correctly if the method is called with an an argument for value, with an argument for id that is bigger than the index of the last element in the linkest list and the linked list is empty", () => {
+    test("The insertAt method of factory function LinkedList works correctly if the method is called with an an argument for value, with an argument for id that is bigger than the index of the last Node in the linkest list and the linked list is empty", () => {
       expect(linkedList.insertAt("value1", 1)).toStrictEqual(
         { head: null }
       );
     });
 
-    test("The insertAt method of factory function LinkedList works correctly if the method is called with an an argument for value, with an argument for id that is bigger than the index of the last element in the linkest list and the linked list has one Node", () => {
+    test("The insertAt method of factory function LinkedList works correctly if the method is called with an an argument for value, with an argument for id that is bigger than the index of the last Node in the linkest list and the linked list has one Node", () => {
       linkedList.append("value1");
       expect(linkedList.insertAt("value2", 2)).toStrictEqual(
         { head: { value: "value1", next: null } }
       );
     });
 
-    test("The insertAt method of factory function LinkedList works correctly if the method is called with an an argument for value, with an argument for id that is bigger than the index of the last element in the linkest list and the linked list has more than one Node", () => {
+    test("The insertAt method of factory function LinkedList works correctly if the method is called with an an argument for value, with an argument for id that is bigger than the index of the last Node in the linkest list and the linked list has more than one Node", () => {
       linkedList.append("value1");
       linkedList.append("value2");
       expect(linkedList.insertAt("value3", 3)).toStrictEqual(

@@ -196,13 +196,9 @@ export const LinkedList = () => {
     remove a Node at given index (id) from the linked list
     and return the linked list
     */
-    if (!(Number.isInteger(id))) {
-      return linkedList;
-    };
-
     let cur = linkedList.head;
 
-    if ((cur === null) || (id < 0)) {
+    if ((cur === null) || (!(Number.isInteger(id))) || (id < 0)) {
       return linkedList;
     };
 

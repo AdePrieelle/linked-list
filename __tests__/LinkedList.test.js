@@ -188,7 +188,6 @@ describe("Testing the factory function LinkedList", () => {
       );
     });
 
-
     test("The prepend method of factory function LinkedList works correctly if the method is called without an argument and the linked list is empty", () => {
       expect(linkedList.prepend()).toStrictEqual(
         { head: { value: null, next: null } }
@@ -555,10 +554,154 @@ describe("Testing the factory function LinkedList", () => {
       );
     });
 
+    test("The insertAt method of factory function LinkedList works correctly if the method is called without an argument for value, without an argument for id, and the linked list is empty", () => {
+      expect(linkedList.insertAt()).toStrictEqual(
+        { head: null }
+      );
+    });
 
-    // insertAt
-    
+    test("The insertAt method of factory function LinkedList works correctly if the method is called without an argument for value, without an argument for id, and the linked list has one Node", () => {
+      linkedList.append("value1");
+      expect(linkedList.insertAt()).toStrictEqual(
+        { head: { value: "value1", next: null } }
+      );
+    });
 
+    test("The insertAt method of factory function LinkedList works correctly if the method is called without an argument for value, without an argument for id, and the linked list has more than one Node", () => {
+      linkedList.append("value1");
+      linkedList.append("value2");
+      expect(linkedList.insertAt()).toStrictEqual(
+        { head: { value: "value1", next: { value: "value2", next: null } } }
+      );
+    });
+
+    test("The insertAt method of factory function LinkedList works correctly if the method is called with an an argument for value, without an argument for id and the linked list is empty", () => {
+      expect(linkedList.insertAt("value1")).toStrictEqual(
+        { head: null }
+      );
+    });
+
+    test("The insertAt method of factory function LinkedList works correctly if the method is called with an an argument for value, without an argument for id and the linked list has one Node", () => {
+      linkedList.append("value1");
+      expect(linkedList.insertAt("value2")).toStrictEqual(
+        { head: { value: "value1", next: null } }
+      );
+    });
+
+    test("The insertAt method of factory function LinkedList works correctly if the method is called with an an argument for value, without an argument for id and the linked list has more than one Node", () => {
+      linkedList.append("value1");
+      linkedList.append("value2");
+      expect(linkedList.insertAt("value3")).toStrictEqual(
+        { head: { value: "value1", next: { value: "value2", next: null } } }
+      );
+    });
+
+    test("The insertAt method of factory function LinkedList works correctly if the method is called with an an argument for value, with an argument for id that isn't an integer and the linked list is empty", () => {
+      expect(linkedList.insertAt("value1", 0.5)).toStrictEqual(
+        { head: null }
+      );
+    });
+
+    test("The insertAt method of factory function LinkedList works correctly if the method is called with an an argument for value, with an argument for id that is not smaller than the index of the first Node in the linked list and that is not bigger than the index of the last Node in the linked list, with an argument for id that isn't an integer and the linked list has one Node", () => {
+      linkedList.append("value1");
+      expect(linkedList.insertAt("value2", 0.5)).toStrictEqual(
+        { head: { value: "value1", next: null } }
+      );
+    });
+
+    test("The insertAt method of factory function LinkedList works correctly if the method is called with an an argument for value, with an argument for id that is not smaller than the index of the first Node in the linked list and that is not bigger than the index of the last Node in the linked list, with an argument for id that isn't an integer and the linked list has more than one Node", () => {
+      linkedList.append("value1");
+      linkedList.append("value2");
+      expect(linkedList.insertAt("value3", 1.5)).toStrictEqual(
+        { head: { value: "value1", next: { value: "value2", next: null } } }
+      );
+    });
+
+    test("The insertAt method of factory function LinkedList works correctly if the method is called with an an argument for value, with an argument for id that is smaller than the index of the first Node in the linked list and the linked list is empty", () => {
+      expect(linkedList.insertAt("value1", -1)).toStrictEqual(
+        { head: null }
+      );
+    });
+
+    test("The insertAt method of factory function LinkedList works correctly if the method is called with an an argument for value, with an argument for id that is smaller than the index of the first Node in the linked list and the linked list has one Node", () => {
+      linkedList.append("value1");
+      expect(linkedList.insertAt("value2", -1)).toStrictEqual(
+        { head: { value: "value1", next: null } }
+      );
+    });
+
+    test("The insertAt method of factory function LinkedList works correctly if the method is called with an an argument for value, with an argument for id that is smaller than the index of the first Node in the linked list and the linked list has more than one Node", () => {
+      linkedList.append("value1");
+      linkedList.append("value2");
+      expect(linkedList.insertAt("value3", -1)).toStrictEqual(
+        { head: { value: "value1", next: { value: "value2", next: null } } }
+      );
+    });
+
+    test("The insertAt method of factory function LinkedList works correctly if the method is called with an an argument for value, with an argument for id that is not smaller than the index of the first Node in the linked list and that is not bigger than the index of the last Node in the linked list, the argument for id is 0, and the linked list is empty", () => {
+      expect(linkedList.insertAt("value1", 0)).toStrictEqual(
+        { head: { value: "value1", next: null } }
+      );
+    });
+
+    test("The insertAt method of factory function LinkedList works correctly if the method is called with an an argument for value, with an argument for id that is not smaller than the index of the first Node in the linked list and that is not bigger than the index of the last Node in the linked list, the argument for id is 0, and the linked list has one Node", () => {
+      linkedList.append("value1");
+      expect(linkedList.insertAt("value2", 0)).toStrictEqual(
+        { head: { value: "value2", next: { value: "value1", next: null } } }
+      );
+    });
+
+    test("The insertAt method of factory function LinkedList works correctly if the method is called with an an argument for value, with an argument for id that is not smaller than the index of the first Node in the linked list and that is not bigger than the index of the last Node in the linked list, the argument for id is 1, and the linked list has one Node", () => {
+      linkedList.append("value1");
+      expect(linkedList.insertAt("value2", 1)).toStrictEqual(
+        { head: { value: "value1", next: { value: "value2", next: null } } }
+      );
+    });
+
+    test("The insertAt method of factory function LinkedList works correctly if the method is called with an an argument for value, with an argument for id that is not smaller than the index of the first Node in the linked list and that is not bigger than the index of the last Node in the linked list, the argument for id is 0, and the linked list has more than one Node", () => {
+      linkedList.append("value1");
+      linkedList.append("value2");
+      expect(linkedList.insertAt("value3", 0)).toStrictEqual(
+        { head: { value: "value3", next: { value: "value1", next: { value: "value2", next: null } } } }
+      );
+    });
+
+    test("The insertAt method of factory function LinkedList works correctly if the method is called with an an argument for value, with an argument for id that is not smaller than the index of the first Node in the linked list and that is not bigger than the index of the last Node in the linked list, the argument for id is 1, and the linked list has more than one Node", () => {
+      linkedList.append("value1");
+      linkedList.append("value2");
+      expect(linkedList.insertAt("value3", 1)).toStrictEqual(
+        { head: { value: "value1", next: { value: "value3", next: { value: "value2", next: null } } } }
+      );
+    });
+
+    test("The insertAt method of factory function LinkedList works correctly if the method is called with an an argument for value, with an argument for id that is not smaller than the index of the first Node in the linked list and that is not bigger than the index of the last Node in the linked list, the argument for id is 2, and the linked list has more than one Node", () => {
+      linkedList.append("value1");
+      linkedList.append("value2");
+      expect(linkedList.insertAt("value3", 2)).toStrictEqual(
+        { head: { value: "value1", next: { value: "value2", next: { value: "value3", next: null } } } }
+      );
+    });
+
+    test("The insertAt method of factory function LinkedList works correctly if the method is called with an an argument for value, with an argument for id that is bigger than the index of the last element in the linkest list and the linked list is empty", () => {
+      expect(linkedList.insertAt("value1", 1)).toStrictEqual(
+        { head: null }
+      );
+    });
+
+    test("The insertAt method of factory function LinkedList works correctly if the method is called with an an argument for value, with an argument for id that is bigger than the index of the last element in the linkest list and the linked list has one Node", () => {
+      linkedList.append("value1");
+      expect(linkedList.insertAt("value2", 2)).toStrictEqual(
+        { head: { value: "value1", next: null } }
+      );
+    });
+
+    test("The insertAt method of factory function LinkedList works correctly if the method is called with an an argument for value, with an argument for id that is bigger than the index of the last element in the linkest list and the linked list has more than one Node", () => {
+      linkedList.append("value1");
+      linkedList.append("value2");
+      expect(linkedList.insertAt("value3", 3)).toStrictEqual(
+        { head: { value: "value1", next: { value: "value2", next: null } } }
+      );
+    });
   });
 
 

@@ -298,16 +298,16 @@ describe("Testing the factory function LinkedList", () => {
       expect(linkedList.at()).toStrictEqual(null);
     });
 
-    test("The at method of factory function LinkedList works correctly if the method is called with an argument smaller than 0 and the linked list is empty", () => {
+    test("The at method of factory function LinkedList works correctly if the method is called with an argument smaller than the first Node in the linked list and the linked list is empty", () => {
       expect(linkedList.at(-1)).toStrictEqual(null);
     });
 
-    test("The at method of factory function LinkedList works correctly if the method is called with an argument smaller than 0 and the linked list has one Node", () => {
+    test("The at method of factory function LinkedList works correctly if the method is called with an argument smaller than the first Node in the linked list and the linked list has one Node", () => {
       linkedList.append("value1");
       expect(linkedList.at(-1)).toStrictEqual(null);
     });
 
-    test("The at method of factory function LinkedList works correctly if the method is called with an argument smaller than 0 and the linked list has more than one Node", () => {
+    test("The at method of factory function LinkedList works correctly if the method is called with an argument smaller than the first Node in the linked list and the linked list has more than one Node", () => {
       linkedList.append("value1");
       linkedList.append("value2");
       expect(linkedList.at(-1)).toStrictEqual(null);
@@ -347,14 +347,14 @@ describe("Testing the factory function LinkedList", () => {
       expect(linkedList.at(0)).toStrictEqual(null);
     });
 
-    test("The at method of factory function LinkedList works correctly if the method is called with an argument of 0 and there is one Node", () => {
+    test("The at method of factory function LinkedList works correctly if the method is called with an argument of 0 and the linked list has one Node", () => {
       linkedList.append("value1");
       expect(linkedList.at(0)).toStrictEqual(
         { value: "value1", next: null }
       );
     });
 
-    test("The at method of factory function LinkedList works correctly if the method is called with an argument of 0 and there is more than one Node", () => {
+    test("The at method of factory function LinkedList works correctly if the method is called with an argument of 0 and the linked list has more than one Node", () => {
       linkedList.append("value1");
       linkedList.append("value2");
       expect(linkedList.at(0)).toStrictEqual(
@@ -370,7 +370,7 @@ describe("Testing the factory function LinkedList", () => {
       );
     });
 
-    test("The at method of factory function LinkedList works correctly if the method is called with an argument that is bigger than 0 and smaller than the index of the last Node in the linked list and the linked list has more than two Nodes", () => {
+    test("The at method of factory function LinkedList works correctly if the method is called with an argument that is bigger than the index of the first Node in the linked list and smaller than the index of the last Node in the linked list and the linked list has more than two Nodes", () => {
       linkedList.append("value1");
       linkedList.append("value2");
       linkedList.append("value3");
@@ -702,41 +702,164 @@ describe("Testing the factory function LinkedList", () => {
         { head: { value: "value1", next: { value: "value2", next: null } } }
       );
     });
+
+    test("The removeAt method of factory function LinkedList works correctly if the method is called without an argument and the linked list is empty", () => {
+      expect(linkedList.removeAt()).toStrictEqual(
+        { head: null }
+      );
+    });
+
+    test("The removeAt method of factory function LinkedList works correctly if the method is called without an argument and the linked list has one Node", () => {
+      linkedList.append("value1");
+      expect(linkedList.removeAt()).toStrictEqual(
+        { head: { value: "value1", next: null } }
+      );
+    });
+
+    test("The removeAt method of factory function LinkedList works correctly if the method is called without an argument and the linked list has more than one Node", () => {
+      linkedList.append("value1");
+      linkedList.append("value2");
+      expect(linkedList.removeAt()).toStrictEqual(
+        { head: { value: "value1", next: { value: "value2", next: null } } }
+      );
+    });
+
+    test("The removeAt method of factory function LinkedList works correctly if the method is called with an argument smaller than the first Node in the linked list and the linked list is empty", () => {
+      expect(linkedList.removeAt(-1)).toStrictEqual(
+        { head: null }
+      );
+    });
+
+    test("The removeAt method of factory function LinkedList works correctly if the method is called with an argument smaller than the first Node in the linked list and the linked list has one Node", () => {
+      linkedList.append("value1");
+      expect(linkedList.removeAt(-1)).toStrictEqual(
+        { head: { value: "value1", next: null } }
+      );
+    });
+
+    test("The removeAt method of factory function LinkedList works correctly if the method is called with an argument smaller than the first Node in the linked list and the linked list has more than one Node", () => {
+      linkedList.append("value1");
+      linkedList.append("value2");
+      expect(linkedList.removeAt(-1)).toStrictEqual(
+        { head: { value: "value1", next: { value: "value2", next: null } } }
+      );
+    });
+    
+    test("The removeAt method of factory function LinkedList works correctly if the method is called with an argument bigger than the index of the last Node in the linked list and the linked list has one Node", () => {
+      linkedList.append("value1");
+      expect(linkedList.removeAt(1)).toStrictEqual(
+        { head: { value: "value1", next: null } }
+      );
+    });
+
+    test("The removeAt method of factory function LinkedList works correctly if the method is called with an argument bigger than the index of the last Node in the linked list and the linked list has more than one Node", () => {
+      linkedList.append("value1");
+      linkedList.append("value2");
+      expect(linkedList.removeAt(2)).toStrictEqual(
+        { head: { value: "value1", next: { value: "value2", next: null } } }
+      );
+    });
+
+    test("The removeAt method of factory function LinkedList works correctly if the method is called with an argument that isn't an integer and the linked list is empty", () => {
+      expect(linkedList.removeAt(0.5)).toStrictEqual(
+        { head: null }
+      );
+    });
+
+    test("The removeAt method of factory function LinkedList works correctly if the method is called with an argument that isn't an integer and the linked list has one Node", () => {
+      linkedList.append("value1");
+      expect(linkedList.removeAt(0.5)).toStrictEqual(
+        { head: { value: "value1", next: null } }
+      );
+    });
+
+    test("The removeAt method of factory function LinkedList works correctly if the method is called with an argument that isn't an integer and the linked list has more than one Node", () => {
+      linkedList.append("value1");
+      linkedList.append("value2");
+      expect(linkedList.removeAt(0.5)).toStrictEqual(
+        { head: { value: "value1", next: { value: "value2", next: null } } }
+      );
+    });
+
+    test("The removeAt method of factory function LinkedList works correctly if the method is called with an argument of 0 and the linked list is empty", () => {
+      expect(linkedList.removeAt(0)).toStrictEqual(
+        { head: null }
+      );
+    });
+
+    test("The removeAt method of factory function LinkedList works correctly if the method is called with an argument of the first Node in the linked list and the linked list has one Node", () => {
+      linkedList.append("value1");
+      expect(linkedList.removeAt(0)).toStrictEqual(
+        { head: null }
+      );
+    });
+
+    test("The removeAt method of factory function LinkedList works correctly if the method is called with an argument of the first Node in the linked list and the linked list has more than one Node", () => {
+      linkedList.append("value1");
+      linkedList.append("value2");
+      expect(linkedList.removeAt(0)).toStrictEqual(
+        { head: { value: "value2", next: null } }
+      );
+    });
+
+    test("The removeAt method of factory function LinkedList works correctly if the method is called with an argument of the last Node in the linked list and the linked list has more than one Node", () => {
+      linkedList.append("value1");
+      linkedList.append("value2");
+      expect(linkedList.removeAt(1)).toStrictEqual(
+        { head: { value: "value1", next: null } }
+      );
+    });
+
+    test("The removeAt method of factory function LinkedList works correctly if the method is called with an argument of the first Node in the linked list and the linked list has more than two Nodes", () => {
+      linkedList.append("value1");
+      linkedList.append("value2");
+      linkedList.append("value3");
+      expect(linkedList.removeAt(0)).toStrictEqual(
+        { head: { value: "value2", next: { value: "value3", next: null } } }
+      );
+    });
+
+    test("The removeAt method of factory function LinkedList works correctly if the method is called with an argument that is bigger than the first Node in the linked list, smaller than the last Node in the linked list and the linked list has more than two Nodes", () => {
+      linkedList.append("value1");
+      linkedList.append("value2");
+      linkedList.append("value3");
+      expect(linkedList.removeAt(1)).toStrictEqual(
+        { head: { value: "value1", next: { value: "value3", next: null } } }
+      );
+    });
+
+    test("The removeAt method of factory function LinkedList works correctly if the method is called with an argument that is the last Node in the linked list and the linked list has more than two Nodes", () => {
+      linkedList.append("value1");
+      linkedList.append("value2");
+      linkedList.append("value3");
+      expect(linkedList.removeAt(2)).toStrictEqual(
+        { head: { value: "value1", next: { value: "value2", next: null } } }
+      );
+    });
+
+    test("The getLinkedList method of factory function LinkedList works correctly if the linked list is empty", () => {
+      expect(linkedList.getLinkedList()).toStrictEqual(
+        { head: null }
+      );
+    });
+
+    test("The getLinkedList method of factory function LinkedList works correctly if the linked list has one Node", () => {
+      linkedList.append("value1");
+      expect(linkedList.getLinkedList()).toStrictEqual(
+        { head: { value: "value1", next: null } }
+      );
+    });
+
+    test("The getLinkedList method of factory function LinkedList works correctly if the linked list has more than one Node", () => {
+      linkedList.append("value1");
+      linkedList.append("value2");
+      expect(linkedList.getLinkedList()).toStrictEqual(
+        { head: { value: "value1", next: { value: "value2", next: null } } }
+      );
+    });
   });
-
-
 });
   
-
- 
-
-
-
-
-
-
-
-
-
-// test("Creating a linkedList factory function creates a linked list with a head node that points to null", () => {
-//   // const mockLinkedList = jest.fn(() => { head: null });
-//   const linkedList = LinkedList();
-
-//   expect(linkedList.getLinkedList()).toStrictEqual({ head: null });
-// });
-
-
-// test("Prepend to linkedList works correctly if the linked list is empty", () => {
-//   const linkedList = LinkedList();
-
-//   expect(linkedList.prepend("prependValue")).toStrictEqual(
-//     { head: { value: "prependValue", next: null } }
-//   );
-// });
-
-
-
-
 // Testing the method implementation of factory function LinkedList
 
 // test("The append method of LinkedList is called with the correct argument", () => {
@@ -745,7 +868,3 @@ describe("Testing the factory function LinkedList", () => {
 //   linkedList.append("value1");
 //   expect(appendSpy).toHaveBeenCalledWith("value1");
 // });
-
-
-// Testing the return values for the methods of factory function LinkedList
-

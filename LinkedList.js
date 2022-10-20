@@ -2,8 +2,8 @@ const Node = (value = null, next = null) => {
   return {
     value,
     next
-  }
-}
+  };
+};
 
 export const LinkedList = () => {
   let linkedList = { head: null };
@@ -68,7 +68,7 @@ export const LinkedList = () => {
       while(cur.next !== null) {
         cur = cur.next;
       };
-    }
+    };
     return cur;
   };
 
@@ -90,8 +90,8 @@ export const LinkedList = () => {
       */
       if (cur === null) {
         return null;
-      }
-    }
+      };
+    };
     return cur;
   };
 
@@ -109,7 +109,7 @@ export const LinkedList = () => {
     if (cur.next === null) {
       linkedList.head = null;
       return linkedList;
-    }
+    };
 
     while (cur.next.next !== null) {
       cur = cur.next;
@@ -127,7 +127,7 @@ export const LinkedList = () => {
     while (cur !== null) {
       if (cur.value === value) {
         return true;
-      }
+      };
       cur = cur.next;
     };
     return false;
@@ -205,7 +205,7 @@ export const LinkedList = () => {
     if (id === 0) {
       linkedList.head = cur.next;
       return linkedList;
-    }
+    };
 
     let prev = at(id - 1);
     if (!prev || !prev.next) {
@@ -223,7 +223,7 @@ export const LinkedList = () => {
     return linkedList;
   };
 
-  return ({
+  return Object.freeze({
     append,
     prepend,
     size,
@@ -238,92 +238,4 @@ export const LinkedList = () => {
     removeAt,
     getLinkedList
   });
-  
-  // return Object.freeze({
-  //   append,
-  //   prepend,
-  //   size,
-  //   head,
-  //   tail,
-  //   at,
-  //   pop,
-  //   contains,
-  //   find,
-  //   toStringLinkedList,
-  //   insertAt,
-  //   removeAt,
-  //   getLinkedList
-  // });
 };
-
-// let exampleLinkedList = LinkedList();
-// console.log(exampleLinkedList);
-// const example1 = exampleLinkedList.getLinkedList();
-// console.log(example1);
-
-// const toStringLinkedList1 = exampleLinkedList.toStringLinkedList();
-// console.log(toStringLinkedList1);
-
-// exampleLinkedList.append("yo");
-// exampleLinkedList.append("yo2");
-// exampleLinkedList.append("yo3");
-// exampleLinkedList.prepend("yoImFirst");
-// exampleLinkedList.prepend("yoNoImFirst2");
-
-// const toStringLinkedList1 = exampleLinkedList.toStringLinkedList();
-// console.log(toStringLinkedList1);
-
-// const example = exampleLinkedList.getLinkedList();
-// console.log(example);
-
-// const size = exampleLinkedList.size();
-// console.log(size);
-
-// const head = exampleLinkedList.head();
-// console.log(head);
-
-// const tail = exampleLinkedList.tail();
-// console.log(tail);
-
-// const at = exampleLinkedList.at(0);
-// console.log(`at index 0: ${JSON.stringify(at)}`);
-
-// const at2 = exampleLinkedList.at(4);
-// console.log(`at index 4: ${JSON.stringify(at2)}`);
-
-
-// const toStringLinkedList2 = exampleLinkedList.toStringLinkedList();
-// console.log(toStringLinkedList2);
-
-// const pop = exampleLinkedList.pop();
-// console.log(pop);
-
-// const contains = exampleLinkedList.contains("yo");
-// console.log(`contains yo: ${contains}`);
-
-// const contains2 = exampleLinkedList.contains("yo2");
-// console.log(`contains yo2: ${contains2}`);
-
-// const find = exampleLinkedList.find("yo");
-// console.log(`find yo: ${JSON.stringify(find)}`);
-
-// const find2 = exampleLinkedList.find("yo2");
-// console.log(`find yo2: ${JSON.stringify(find2)}`);
-
-// const insertAt = exampleLinkedList.insertAt("insertedValue", 0);
-// console.log(insertAt);
-
-// const insertAt2 = exampleLinkedList.insertAt("insertedValueFirst", 0);
-// console.log(insertAt2);
-
-// const removeAt = exampleLinkedList.removeAt(0);
-// console.log(removeAt);
-
-// const toStringLinkedList = exampleLinkedList.toStringLinkedList();
-// console.log(toStringLinkedList);
-
-
-
-// const updatedLinkedList = exampleLinkedList.getLinkedList();
-// console.log(updatedLinkedList);
-

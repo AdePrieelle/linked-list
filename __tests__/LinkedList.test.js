@@ -1,7 +1,5 @@
 import { LinkedList } from '../LinkedList';
 
-// Testing the interface of factory function LinkedList
-
 describe("Testing the factory function LinkedList", () => {
   let linkedList;
   beforeEach(() => {
@@ -859,12 +857,4 @@ describe("Testing the factory function LinkedList", () => {
     });
   });
 });
-  
-// Testing the method implementation of factory function LinkedList
-
-// test("The append method of LinkedList is called with the correct argument", () => {
-//   const linkedList = LinkedList();
-//   const appendSpy = jest.spyOn(linkedList, "append");
-//   linkedList.append("value1");
-//   expect(appendSpy).toHaveBeenCalledWith("value1");
-// });
+ 
